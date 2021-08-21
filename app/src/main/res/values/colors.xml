@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorMiddleYellow">#ffe900</color>
+    <color name="colorRoyalBlueDark">#002f6d</color>
+    <color name="colorCultured">#F9F8F8</color>
+    <color name="colorBlackShadows">#DBD2D3</color>
+    <color name="colorPearlyPurple">#AA6DA3</color>
+    <color name="colorRichBlack">#06070E</color>
+    <color name="colorDarkLiver">#716969</color>
+    <color name="colorGreenRYB">#6AB547</color>
+</resources>

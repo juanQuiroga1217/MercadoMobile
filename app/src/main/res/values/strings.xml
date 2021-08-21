@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Mercado Mobile</string>
+
+
+    <!-- PopUp Texts -->
+    <string name="txtLoading">Cargando Resultados</string>
+
+    <!-- Button Texts -->
+    <string name="btnTxtOk">OK</string>
+
+
+    <!-- Label Texts -->
+
+    <string name="lblSearch">Busca tus productos</string>
+    <string name="lblPromotions">Promociones de diferentes categorias</string>
+    <string name="lblCategoryComputacion">Computacion</string>
+    <string name="lblCategoryCelulares">Celulares y Teléfonos</string>
+    <string name="lblCategoryDeportes">Deportes y fitness</string>
+    <string name="lblFreeShipping">Envío Gratis</string>
+
+    <!-- Photo Descriptions -->
+    <string name="btnSearchDescription">Search Button</string>
+    <string name="imgProductDescription">Product Photo</string>
+
+    <!-- Log and Error Texts -->
+    <string name="msg_network_error">Internet connection failed, please try again later</string>
+
+
+    <!-- other texts -->
+    <string name="hntSearch">Ej: xiaomi 9s, monitor y mas…</string>
+
+</resources>
