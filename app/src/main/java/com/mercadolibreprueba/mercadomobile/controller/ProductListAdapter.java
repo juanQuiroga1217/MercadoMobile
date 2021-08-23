@@ -18,53 +18,47 @@ import com.mercadolibreprueba.mercadomobile.view.ProductDetailsScreen;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
+public class ProductListAdapter extends RecyclerView.Adapter<ProductListAdapter.ProductListHolder> {
 
-
-public class CardProductAdapter extends RecyclerView.Adapter<CardProductAdapter.CardProductAdapterHolder> {
 
     private Context context;
     private ArrayList<ProductModel> products;
     private ProductDetailsScreen productDetailsScreen;
 
-    public CardProductAdapter(Context context, ArrayList<ProductModel> products) {
+
+    public ProductListAdapter(Context context, ArrayList<ProductModel> products){
         this.context = context;
         this.products = products;
-        productDetailsScreen = new ProductDetailsScreen();
+        productDetailsScreen =  new ProductDetailsScreen();
     }
 
-    void setProducts(ArrayList<ProductModel> products) {
+
+    public void setProducts(ArrayList<ProductModel> products){
         this.products = products;
     }
 
 
+    class ProductListHolder extends RecyclerView.ViewHolder {
 
-    class CardProductAdapterHolder extends RecyclerView.ViewHolder{
-
-        private ImageView mProductPhoto;
-        private TextView mProductName;
+        private ImageView mProductThumbnailPicture;
+        private TextView mProductTitle;
         private TextView mProductPrice;
         private TextView mProductShipping;
 
-        CardProductAdapterHolder(@NonNull View itemView) {
+        ProductListHolder(@NonNull View itemView) {
             super(itemView);
-            mProductPhoto = itemView.findViewById(R.id.imgProductPhoto);
-            mProductName = itemView.findViewById(R.id.lblProductName);
-            mProductPrice = itemView.findViewById(R.id.lblProductPrice);
+
+            mProductThumbnailPicture = itemView.findViewById(R.id.productThumbnailPicture);
+            mProductTitle = itemView.findViewById(R.id.txtProductTitleList);
+            mProductPrice = itemView.findViewById(R.id.txtProductPriceList);
             mProductShipping = itemView.findViewById(R.id.lblProductShipping);
+
         }
 
+        void bind(Context context, final ProductModel product){
 
-
-        /*
-         * Manage List Item Behaviour
-         */
-
-        void bind(final ProductModel product){
-
-            mProductName.setText(product.getProductTitle());
-
+            mProductTitle.setText(product.getProductTitle());
             mProductPrice.setText(DecimalFormat.getCurrencyInstance().format(product.getProductPrice()));
-
 
             if (product.getProductShipping().isShippingFree()){
                 mProductShipping.setText(R.string.lblFreeShipping);
@@ -73,7 +67,7 @@ public class CardProductAdapter extends RecyclerView.Adapter<CardProductAdapter.
             }
 
             if (product.getProductThumbnail()!=null){
-                Glide.with(context).load(product.getProductThumbnail()).into(mProductPhoto);
+                Glide.with(context).load(product.getProductThumbnail()).into(mProductThumbnailPicture);
             }
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -86,28 +80,22 @@ public class CardProductAdapter extends RecyclerView.Adapter<CardProductAdapter.
     }
 
 
-
-
-
     @NonNull
     @Override
-    public CardProductAdapterHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.custom_card_product_element, parent, false);
-        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.MATCH_PARENT);
+    public ProductListHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.custom_product_element, parent, false);
+        RecyclerView.LayoutParams layoutParams = new RecyclerView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         view.setLayoutParams(layoutParams);
-        return new CardProductAdapterHolder(view);
+        return new ProductListHolder(view);
     }
 
-
     @Override
-    public void onBindViewHolder(@NonNull CardProductAdapterHolder holder, int position) {
-        holder.bind(products.get(position));
+    public void onBindViewHolder(@NonNull ProductListHolder holder, int position) {
+        holder.bind(context, products.get(position));
     }
 
     @Override
     public int getItemCount() {
         return products.size();
     }
-
-
 }

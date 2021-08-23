@@ -7,7 +7,7 @@ package com.mercadolibreprueba.mercadomobile.model;
  * UPDATES:
  * VERSION      DATE       AUTOR      REQUIREMENT              UPDATE DESCRIPTION
  * -------  ------------  ----------  ---------------  -------------------------------------------------
- * 1.0       19/08/2021   jquiroga      creation                    creation
+ * 1.0       21/08/2021   jquiroga      creation                    creation
  * ***************************************************************************
  */
 

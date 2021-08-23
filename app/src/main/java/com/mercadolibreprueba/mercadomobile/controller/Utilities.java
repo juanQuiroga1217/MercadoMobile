@@ -42,4 +42,10 @@ public class Utilities {
         cardRecyclerView.setLayoutManager(cardLinearLayoutManager);
 
     }
+
+    public void setUpRecyclerView(RecyclerView recyclerView, LinearLayoutManager recyclerViewLinearLayoutManager){
+
+        recyclerViewLinearLayoutManager.setOrientation(RecyclerView.VERTICAL);
+        recyclerView.setLayoutManager(recyclerViewLinearLayoutManager);
+    }
 }

@@ -1,7 +1,8 @@
 package com.mercadolibreprueba.mercadomobile.controller;
 
 import com.mercadolibreprueba.mercadomobile.model.ConstantsApp;
-import com.mercadolibreprueba.mercadomobile.model.QueryResultModel;
+import com.mercadolibreprueba.mercadomobile.model.QueryProductResultModel;
+import com.mercadolibreprueba.mercadomobile.model.QuerySellerResultModel;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -37,10 +38,24 @@ public class SearchApiControllerTest {
     @Test
     public void testApiResponseByCategory() {
 
-        Call<QueryResultModel> callComputacion = webServiceClient.getProductsComputacion(ConstantsApp.getCategoryComputacionCode(), ConstantsApp.getCategoryListLimit());
+        Call<QueryProductResultModel> callCategory = webServiceClient.getProductsByCategory(ConstantsApp.getCategoryComputacionCode(), ConstantsApp.getCategoryListLimit());
 
         try {
-            Response response = callComputacion.execute();
+            Response response = callCategory.execute();
+            assertTrue(response.isSuccessful() &&response.body()!=null);
+        } catch (IOException e){
+            MessagesApp.LogMessageException(this.getClass(), e);
+        }
+
+    }
+
+    @Test
+    public void testApiResponseBySeller() {
+
+        Call<QuerySellerResultModel> callSeller = webServiceClient.getSellerInfo("530380977");
+
+        try {
+            Response response = callSeller.execute();
             assertTrue(response.isSuccessful() &&response.body()!=null);
         } catch (IOException e){
             MessagesApp.LogMessageException(this.getClass(), e);

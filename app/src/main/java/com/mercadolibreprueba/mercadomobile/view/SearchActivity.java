@@ -5,10 +5,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.mercadolibreprueba.mercadomobile.R;
@@ -35,10 +37,14 @@ public class SearchActivity extends AppCompatActivity {
     private CardProductAdapter cardProductCelularesAdapter;
     private CardProductAdapter cardProductAdapterDeportes;
 
-    private final Utilities utilities = new Utilities();
+    private Utilities utilities;
+    private SearchApiController searchApiController;
 
     private ImageButton mBtnSearch;
     private EditText mTxtSearchBar;
+    private ProgressBar mProgressBarComputacion;
+    private ProgressBar mProgressBarCelulares;
+    private ProgressBar mProgressBarDeportes;
 
 
     @Override
@@ -61,10 +67,19 @@ public class SearchActivity extends AppCompatActivity {
         recyclerViewCelulares = findViewById(R.id.recyclerCategoryCelulares);
         recyclerViewDeportes = findViewById(R.id.recyclerCategoryDeportes);
 
+        mProgressBarCelulares = findViewById(R.id.progressBarCategoryCelulares);
+        mProgressBarComputacion = findViewById(R.id.progressBarCategoryComputacion);
+        mProgressBarDeportes = findViewById(R.id.progressBarCategoryDeportes);
+
+        mBtnSearch.setOnClickListener(view -> buscarProducto());
+
     }
 
 
     private void setUpCategoryLists() {
+
+        searchApiController = new SearchApiController();
+        utilities = new Utilities();
 
         LinearLayoutManager computacionLayoutManager = new LinearLayoutManager(this);
         utilities.setUpCardRecyclerView(recyclerViewComputacion, computacionLayoutManager);
@@ -86,15 +101,24 @@ public class SearchActivity extends AppCompatActivity {
 
     private void loadControls() {
 
-        SearchApiController searchApiController = new SearchApiController();
-
         if (utilities.checkInternetConnection(this)){
-            searchApiController.getByCategory(cardProductsComputacionAdapter, recyclerViewComputacion, ConstantsApp.getCategoryComputacionCode());
-            searchApiController.getByCategory(cardProductCelularesAdapter, recyclerViewCelulares, ConstantsApp.getCategoryCelularesCode());
-            searchApiController.getByCategory(cardProductAdapterDeportes, recyclerViewDeportes, ConstantsApp.getCategoryDeportesCode());
+            searchApiController.getByCategory(cardProductsComputacionAdapter, recyclerViewComputacion, ConstantsApp.getCategoryComputacionCode(), mProgressBarComputacion);
+            searchApiController.getByCategory(cardProductCelularesAdapter, recyclerViewCelulares, ConstantsApp.getCategoryCelularesCode(), mProgressBarCelulares);
+            searchApiController.getByCategory(cardProductAdapterDeportes, recyclerViewDeportes, ConstantsApp.getCategoryDeportesCode(), mProgressBarDeportes);
 
         } else {
             MessagesApp.showAlertMessage(getString(R.string.msg_network_error), getString(R.string.btnTxtOk), this);
         }
     }
+
+    private void buscarProducto() {
+
+        mBtnSearch.setClickable(false);
+        searchApiController.getProductQueryResults(mTxtSearchBar.getText().toString());
+        Intent intentProductList = new Intent(this, ProductListActivity.class);
+        intentProductList.putExtra("SearchQuery", mTxtSearchBar.getText().toString());
+        startActivity(intentProductList);
+
+    }
+
 }

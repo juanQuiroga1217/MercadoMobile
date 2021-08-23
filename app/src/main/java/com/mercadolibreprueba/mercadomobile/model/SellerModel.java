@@ -1,13 +1,28 @@
 package com.mercadolibreprueba.mercadomobile.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class SellerModel {
 
+    @SerializedName("id")
     private String sellerId;
+
+    @SerializedName("nickname")
     private String sellerNickname;
+
+    @SerializedName("permalink")
     private String sellerPermalink;
+
+    @SerializedName("registration_date")
     private String sellerRegistrationDate;
+
+    @SerializedName("real_estate_agency")
     private boolean sellerIsRealEstateAgency;
+
+    @SerializedName("car_dealer")
     private boolean sellerIsCarDealer;
+
+    @SerializedName("tags")
     private String[] sellerTags;
 
     public SellerModel(String sellerId, String sellerNickname, String sellerPermalink, String sellerRegistrationDate, boolean sellerIsRealEstateAgency, boolean sellerIsCarDealer, String[] sellerTags) {

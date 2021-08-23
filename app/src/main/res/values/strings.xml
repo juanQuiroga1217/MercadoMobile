@@ -7,7 +7,8 @@
 
     <!-- Button Texts -->
     <string name="btnTxtOk">OK</string>
-
+    <string name="btnTxtIrMeli">Ver en Mercado Libre</string>
+    <string name="btnTxtVolver">Volver </string>
 
     <!-- Label Texts -->
 
@@ -17,6 +18,11 @@
     <string name="lblCategoryCelulares">Celulares y Teléfonos</string>
     <string name="lblCategoryDeportes">Deportes y fitness</string>
     <string name="lblFreeShipping">Envío Gratis</string>
+    <string name="lblAcceptsMercadoPago">¡Acepta Mercado Pago!</string>
+    <string name="lblConsejosSeguridad">Consejos de seguridad</string>
+    <string name="lblConsejo1">- Desde Mercado Libre, Nunca te pediremos contraseñas, PIN o códigos de verificación a través de Whatsapp, telefono, SMS o email.</string>
+    <string name="lblConsejo2">- No uses servicios de pago anónimos (por ej. Western Union), ni envíes dinero al exterior.</string>
+    <string name="lblResultados">Resultados de la busqueda: </string>
 
     <!-- Photo Descriptions -->
     <string name="btnSearchDescription">Search Button</string>

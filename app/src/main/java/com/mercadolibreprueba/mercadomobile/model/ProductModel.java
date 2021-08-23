@@ -2,7 +2,7 @@ package com.mercadolibreprueba.mercadomobile.model;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ProductModel {
@@ -15,7 +15,7 @@ public class ProductModel {
     private String productTitle;
 
     @SerializedName("seller")
-    private SellerModel productSeller;
+    private HashMap<String, String> productSeller;
 
     @SerializedName("price")
     private Double productPrice;
@@ -57,7 +57,27 @@ public class ProductModel {
     private ProductsShippingModel productShipping;
 
     @SerializedName("attributes")
-    private ProductAttributesModel[] productAttributes;
+    private ArrayList<ProductAttributesModel> productAttributes;
+
+    public ProductModel(String productId, String productTitle, HashMap<String, String> productSeller, Double productPrice, String productCurrencyId, String productAvailableQuantity, String productSoldQuantity, String productBuyingMode, String productListingTypeId, String productStopTime, String productCondition, String productPermalink, String productThumbnail, boolean productAcceptsMercadopago, HashMap<String, String> productAddress, ProductsShippingModel productShipping, ArrayList<ProductAttributesModel> productAttributes) {
+        this.productId = productId;
+        this.productTitle = productTitle;
+        this.productSeller = productSeller;
+        this.productPrice = productPrice;
+        this.productCurrencyId = productCurrencyId;
+        this.productAvailableQuantity = productAvailableQuantity;
+        this.productSoldQuantity = productSoldQuantity;
+        this.productBuyingMode = productBuyingMode;
+        this.productListingTypeId = productListingTypeId;
+        this.productStopTime = productStopTime;
+        this.productCondition = productCondition;
+        this.productPermalink = productPermalink;
+        this.productThumbnail = productThumbnail;
+        this.productAcceptsMercadopago = productAcceptsMercadopago;
+        this.productAddress = productAddress;
+        this.productShipping = productShipping;
+        this.productAttributes = productAttributes;
+    }
 
     public String getProductId() {
         return productId;
@@ -75,11 +95,11 @@ public class ProductModel {
         this.productTitle = productTitle;
     }
 
-    public SellerModel getProductSeller() {
+    public HashMap<String, String> getProductSeller() {
         return productSeller;
     }
 
-    public void setProductSeller(SellerModel productSeller) {
+    public void setProductSeller(HashMap<String, String> productSeller) {
         this.productSeller = productSeller;
     }
 
@@ -187,31 +207,11 @@ public class ProductModel {
         this.productShipping = productShipping;
     }
 
-    public ProductAttributesModel[] getProductAttributes() {
+    public ArrayList<ProductAttributesModel> getProductAttributes() {
         return productAttributes;
     }
 
-    public void setProductAttributes(ProductAttributesModel[] productAttributes) {
-        this.productAttributes = productAttributes;
-    }
-
-    public ProductModel(String productId, String productTitle, SellerModel productSeller, Double productPrice, String productCurrencyId, String productAvailableQuantity, String productSoldQuantity, String productBuyingMode, String productListingTypeId, String productStopTime, String productCondition, String productPermalink, String productThumbnail, boolean productAcceptsMercadopago, HashMap<String, String> productAddress, ProductsShippingModel productShipping, ProductAttributesModel[] productAttributes) {
-        this.productId = productId;
-        this.productTitle = productTitle;
-        this.productSeller = productSeller;
-        this.productPrice = productPrice;
-        this.productCurrencyId = productCurrencyId;
-        this.productAvailableQuantity = productAvailableQuantity;
-        this.productSoldQuantity = productSoldQuantity;
-        this.productBuyingMode = productBuyingMode;
-        this.productListingTypeId = productListingTypeId;
-        this.productStopTime = productStopTime;
-        this.productCondition = productCondition;
-        this.productPermalink = productPermalink;
-        this.productThumbnail = productThumbnail;
-        this.productAcceptsMercadopago = productAcceptsMercadopago;
-        this.productAddress = productAddress;
-        this.productShipping = productShipping;
+    public void setProductAttributes(ArrayList<ProductAttributesModel> productAttributes) {
         this.productAttributes = productAttributes;
     }
 }

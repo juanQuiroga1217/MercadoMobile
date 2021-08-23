@@ -26,7 +26,7 @@ import java.util.Objects;
  * UPDATES:
  * VERSION      DATE       AUTOR      REQUIREMENT              UPDATE DESCRIPTION
  * -------  ------------  ----------  ---------------  -------------------------------------------------
- * 1.0       19/08/2021   jquiroga      creation                    creation
+ * 1.0       21/08/2021   jquiroga      creation                    creation
  * ***************************************************************************
  */
 
@@ -119,7 +119,7 @@ public class MessagesApp {
 
 
 
-    static void LogApiException(Class<?> method, String exception){
+    public static void LogApiException(Class<?> method, String exception){
         try {
             if (method != null && method.getEnclosingMethod() != null)
                 Log.d(ConstantsApp.LOG_MERCADO_MOBILE, method.getEnclosingMethod().getName() + ConstantsApp.SPACE + exception);

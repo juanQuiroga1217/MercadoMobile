@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueryResultModel {
+public class QueryProductResultModel {
 
     @SerializedName("site_id")
     private String resultSiteId;
