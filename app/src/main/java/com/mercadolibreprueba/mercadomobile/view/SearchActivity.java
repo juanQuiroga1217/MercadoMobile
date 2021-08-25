@@ -112,13 +112,12 @@ public class SearchActivity extends AppCompatActivity {
     }
 
     private void buscarProducto() {
-
         mBtnSearch.setClickable(false);
         searchApiController.getProductQueryResults(mTxtSearchBar.getText().toString());
         Intent intentProductList = new Intent(this, ProductListActivity.class);
         intentProductList.putExtra("SearchQuery", mTxtSearchBar.getText().toString());
         startActivity(intentProductList);
-
+        mBtnSearch.setClickable(true);
     }
 
 }

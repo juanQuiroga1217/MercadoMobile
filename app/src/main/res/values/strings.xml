@@ -14,7 +14,7 @@
 
     <string name="lblSearch">Busca tus productos</string>
     <string name="lblPromotions">Promociones de diferentes categorias</string>
-    <string name="lblCategoryComputacion">Computacion</string>
+    <string name="lblCategoryComputacion">Computación</string>
     <string name="lblCategoryCelulares">Celulares y Teléfonos</string>
     <string name="lblCategoryDeportes">Deportes y fitness</string>
     <string name="lblFreeShipping">Envío Gratis</string>

@@ -76,11 +76,10 @@ public class CardProductAdapter extends RecyclerView.Adapter<CardProductAdapter.
                 Glide.with(context).load(product.getProductThumbnail()).into(mProductPhoto);
             }
 
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    productDetailsScreen.setProductDialog(product, context);
-                }
+            itemView.setOnClickListener(view -> {
+                itemView.setClickable(false);
+                productDetailsScreen.setProductDialog(product, context);
+                itemView.setClickable(true);
             });
         }
     }

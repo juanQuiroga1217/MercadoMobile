@@ -51,7 +51,6 @@ public class SearchApiController {
             @Override
             public void onResponse(Call<QueryProductResultModel> call, Response<QueryProductResultModel> response) {
                 assert response.body() != null;
-
                 RXProductBus.getBehaviourSubject().onNext(response.body().getResultProductList());
             }
 
