@@ -63,4 +63,17 @@ public class SearchApiControllerTest {
 
     }
 
+    @Test
+    public void testApiResponseByQuery() {
+
+        Call<QueryProductResultModel> callProduct = webServiceClient.getProductsBySearch("Celulares");
+
+        try {
+            Response response = callProduct.execute();
+            assertTrue(response.isSuccessful() && response.body()!= null);
+        } catch (IOException e){
+            MessagesApp.LogMessageException(this.getClass(), e);
+        }
+    }
+
 }
