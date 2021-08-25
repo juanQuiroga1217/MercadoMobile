@@ -31,7 +31,7 @@ Este proyecto consta de 3 Pantallas principales
 
 3. Abre el proyecto con tu IDE y compila el codigo
 
-### una vez compilado te permetira ejecutar los test unitarios o generar el APK
+### una vez compilado te permitira ejecutar los test unitarios o generar el APK
 
 
 ## APK
@@ -56,3 +56,31 @@ En versiones de android previas a 6.0, Mercado Mobile requiere los siguientes pe
 - Full Network Access.
 - View Network Connections.
 
+## Pantallas
+
+### Splash Activity
+
+  Pantalla de presentacion, no cumple ninguna funcion hasta el momento
+  
+### Search Activity
+  
+  Carga tres categorias predefinidas de productos desde la API, en esta pantalla se encuentra la barra de busqueda     principal, utiliza RXJava para cargar resultados antes de realizar el intent hacia la siguiente pantalla. 
+  
+### Product List Activity
+ Carga los resultados de la busqueda del usuario, se llama a si misma para realizar una nueva busqueda utilizando el mismo metodo de RXJava.
+### Product Details Screen
+  Muestra los detalles del producto, un boton para ir a mercadolibre y obtener mas detalles del mismo, lista los atributos en la parte inferior con una recyclerview, independiente de la cantidad de atributos que tenga o no tenga el producto.
+  
+## Librerias 
+
+### Retrofit
+
+Con el uso de retrofit se hacen las peticiones al API abierta de Mercado Libre, retrofit administra las peticiones en segundo plano sin alterar el hilo principal, para más información [Retrofit](https://square.github.io/retrofit/)
+
+### RXJava
+
+Se usa para administrar las busquedas entre pantallas de forma reactiva, de esta manera al buscar un producto el procesamiento se hace desde antes de entrar a la pantalla de `Product List Activity` para más información: [RXJava](https://github.com/ReactiveX/RxAndroid)
+
+### Glide
+
+Esta libreria permite el cargue de imagenes desde una URL sin necesidad de realizar trafico excesivo desde el dispositivo del usuario, ahorrando recursos como memoria y conexión a internet, para más información [Glide](https://github.com/bumptech/glide)
