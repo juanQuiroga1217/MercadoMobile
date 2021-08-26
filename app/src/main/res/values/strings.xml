@@ -4,6 +4,7 @@
 
     <!-- PopUp Texts -->
     <string name="txtLoading">Cargando Resultados</string>
+    <string name="toastEmptySearchQuery">Por favor ingrese un texto para buscar</string>
 
     <!-- Button Texts -->
     <string name="btnTxtOk">OK</string>

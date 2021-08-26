@@ -13,6 +13,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.mercadolibreprueba.mercadomobile.R;
+import com.mercadolibreprueba.mercadomobile.controller.MessagesApp;
 import com.mercadolibreprueba.mercadomobile.controller.ProductListAdapter;
 import com.mercadolibreprueba.mercadomobile.controller.RXProductBus;
 import com.mercadolibreprueba.mercadomobile.controller.SearchApiController;
@@ -59,7 +60,14 @@ public class ProductListActivity extends AppCompatActivity {
         mBtnSearch = findViewById(R.id.btnSearchList);
         mProgressBar = findViewById(R.id.progressBarListResult);
 
-        mBtnSearch.setOnClickListener(view -> searchProduct());
+        mBtnSearch.setOnClickListener(view ->{
+
+            if (!mTxtSearchBar.getText().toString().equals("")){
+                searchProduct();
+            } else {
+                MessagesApp.showToast(getString(R.string.toastEmptySearchQuery), this);
+            }
+        });
 
         mRecyclerSearchResult = findViewById(R.id.recyclerSearchResult);
         mRecyclerSearchResult.setVisibility(View.INVISIBLE);

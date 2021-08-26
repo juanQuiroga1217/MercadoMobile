@@ -71,7 +71,13 @@ public class SearchActivity extends AppCompatActivity {
         mProgressBarComputacion = findViewById(R.id.progressBarCategoryComputacion);
         mProgressBarDeportes = findViewById(R.id.progressBarCategoryDeportes);
 
-        mBtnSearch.setOnClickListener(view -> buscarProducto());
+        mBtnSearch.setOnClickListener(view ->{
+            if (!mTxtSearchBar.getText().toString().equals("")){
+                buscarProducto();
+            } else {
+                MessagesApp.showToast(getString(R.string.toastEmptySearchQuery), this);
+            }
+        });
 
     }
 
